@@ -12,7 +12,7 @@ You need [Firefox](https://www.mozilla.org/en-US/firefox/all/) web browser with
 [Greasemonkey addon](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) 
 installed.
 
-Then you can install this script from [userscripts.org](https://userscripts.org/) or
+Then you can install this script from [userscripts.org](https://userscripts.org/scripts/show/163821) or 
 [download it from GitHub](https://github.com/barszczmm/greasemonkey-scripts/raw/master/runtastic/Runtastic_mass_exporter.user.js)
 and drag it to your browser window.
  
