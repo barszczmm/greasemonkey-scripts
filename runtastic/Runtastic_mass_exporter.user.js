@@ -2,8 +2,8 @@
 // @name        Runtastic mass exporter
 // @namespace   http://www.barszcz.info/
 // @description Export all your workouts from Runtastic
-// @include     http://www.runtastic.com/en/users/*
-// @version     1.0.1
+// @include     https://www.runtastic.com/en/users/*
+// @version     1.0.2
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
 // ==/UserScript==
@@ -33,7 +33,8 @@ jQuery(document).ready(function($) {
 			+ '.bttn.export:hover { background: #AD4D1E; }'
 			+'</style>');
 
-		$cal.parent().next().css({position: 'relative'}).append($button.css({position: 'absolute', left: -80, top: 0}));
+		$cal.parent().next().css({position: 'relative'}).append($button.css({position: 'absolute', left: -90, top: 0}));
+
 
 		$button.click(
 			function(e) {
@@ -63,7 +64,9 @@ jQuery(document).ready(function($) {
 					+ '<li style="float: left;"><label><input type="radio" name="filetype" value="kml" />KML</label></li></ul>'
 					+ '<p><strong>Important notice: </strong> before starting export, configure your browser to automatically save files of type chosen above (gpx, tcx or kml).<br />You can do this by going to <a href="' + $($links[0]).attr('href') + '" target="_blank">this link</a>, then click on "Download", then on "Export as .... file".<br />When your browser asks you what to do, select "Save file" and check "Remember for this type of files"<br />(texts in your browser may be slightly different but they should mean the same).<br />If your browser is configured properly you can start exporting your data.</p>'
 					+ '<p style="font-size: 10px; margin:-1em 0 2em"><strong>Script source code and license:</strong> source of this script can be viewed on <a href="https://github.com/barszczmm/greasemonkey-scripts/tree/master/runtastic">GitHub</a>, script is released under <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>'
-					+ '<a href="#" class="bttn export start-export">Export</a><a href="#" class="bttn export stop-export" style="display:none;">Stop</a><div id="export_results" style="margin-top: 1em;"></div>';
+					+ '<a href="#" class="bttn export start-export">Export</a><a href="#" class="bttn export stop-export" style="display:none;">Stop</a> <a href="#" class="bttn close-export" style="display:yes;">close</a>'
+					+ '<div id="export_results" style="margin-top: 1em;"></div>';
+					
 
 				$modal.find('.popup .content').html(content);
 				$modal.css({display: 'block', visibility: 'hidden'});
@@ -76,6 +79,14 @@ jQuery(document).ready(function($) {
 							});
 				$modal.fadeIn();
 				$overlay.fadeIn();
+				$modal.find('.close-export').click(
+					function () {
+					
+					$modal.fadeOut();
+				    $overlay.fadeOut();
+						
+					}
+				);
 				$modal.find('.stop-export').click(
 					function () {
 						clearInterval(exportInterval);
@@ -98,7 +109,7 @@ jQuery(document).ready(function($) {
 									$modal.find('.stop-export').hide();
 									return;
 								}
-								downloadURL('http://www.runtastic.com' + $($links[linkIndex]).attr('href') + '.' + filetype, linkIndex);
+								downloadURL('https://www.runtastic.com' + $($links[linkIndex]).attr('href') + '.' + filetype, linkIndex);
 								linkIndex ++;
 								$modal.find('#export_results').append('<span> ' + linkIndex + ' </span>');
 							},
