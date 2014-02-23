@@ -2,7 +2,7 @@
 // @name        Runtastic mass exporter
 // @namespace   http://www.barszcz.info/
 // @description Export all your workouts from Runtastic
-// @include     http://www.runtastic.com/en/users/*
+// @include     https://www.runtastic.com/en/users/*
 // @version     1.0.1
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
@@ -98,7 +98,7 @@ jQuery(document).ready(function($) {
 									$modal.find('.stop-export').hide();
 									return;
 								}
-								downloadURL('http://www.runtastic.com' + $($links[linkIndex]).attr('href') + '.' + filetype, linkIndex);
+								downloadURL('https://www.runtastic.com' + $($links[linkIndex]).attr('href') + '.' + filetype, linkIndex);
 								linkIndex ++;
 								$modal.find('#export_results').append('<span> ' + linkIndex + ' </span>');
 							},
